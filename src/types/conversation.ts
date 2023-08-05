@@ -35,6 +35,7 @@ export type SelfHostedConversationConfig = {
   chunkSize?: number;
   downsampling?: number;
   subscribeTranscript?: boolean;
+  payload?: any
 };
 
 export type AudioMetadata = {

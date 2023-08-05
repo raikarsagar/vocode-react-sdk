@@ -33,6 +33,9 @@ export const useConversation = (
   status: ConversationStatus;
   start: () => void;
   stop: () => void;
+  toggleActive: () => void;
+  active: () => boolean;
+  setActive: () => boolean;
   error: Error | undefined;
   analyserNode: AnalyserNode | undefined;
   transcripts: Transcript[];
@@ -184,7 +187,8 @@ export const useConversation = (
     chunkSize: number | undefined,
     downsampling: number | undefined,
     conversationId: string | undefined,
-    subscribeTranscript: boolean | undefined
+    subscribeTranscript: boolean | undefined,
+    payload: any
   ): AudioConfigStartMessage => ({
     type: "websocket_audio_config_start",
     inputAudioConfig: {
@@ -199,6 +203,7 @@ export const useConversation = (
     },
     conversationId,
     subscribeTranscript,
+    payload
   });
 
   const startConversation = async () => {
@@ -330,7 +335,8 @@ export const useConversation = (
         selfHostedConversationConfig.chunkSize,
         selfHostedConversationConfig.downsampling,
         selfHostedConversationConfig.conversationId,
-        selfHostedConversationConfig.subscribeTranscript
+        selfHostedConversationConfig.subscribeTranscript,
+        selfHostedConversationConfig.payload
       );
     }
 

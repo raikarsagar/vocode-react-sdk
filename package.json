@@ -1,11 +1,11 @@
 {
-  "name": "vocode",
-  "version": "1.0.36",
+  "name": "vocode-salesio",
+  "version": "1.0.36.1",
   "description": "",
   "homepage": "https://vocode.dev",
   "repository": {
     "type": "git",
-    "url": "https://github.com/vocodedev/vocode-react-sdk.git"
+    "url": "https://github.com/raikarsagar/vocode-react-sdk.git"
   },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -20,15 +20,17 @@
     "chatbot",
     "audio"
   ],
-  "author": "Ajay Raj <ajay@vocode.dev>",
+  "author": "Sagar Raikar <raikarsagar007@gmail.com>",
   "license": "MIT",
   "devDependencies": {
     "typescript": "^4.9.5"
   },
   "dependencies": {
+    "buffer": "^6.0.3",
     "extendable-media-recorder": "^7.1.5",
     "extendable-media-recorder-wav-encoder": "^7.0.84",
     "react-device-detect": "^2.2.3",
-    "snake-case": "^3.0.4"
+    "snake-case": "^3.0.4",
+    "vocode": "^1.0.36"
   }
 }
