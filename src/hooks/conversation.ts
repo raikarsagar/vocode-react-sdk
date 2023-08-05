@@ -11,6 +11,7 @@ import {
   CurrentSpeaker,
   SelfHostedConversationConfig,
   Transcript,
+  Payload
 } from "../types/conversation";
 import { blobToBase64, stringify } from "../utils";
 import { AudioEncoding } from "../types/vocode/audioEncoding";
@@ -40,12 +41,15 @@ export const useConversation = (
   analyserNode: AnalyserNode | undefined;
   transcripts: Transcript[];
   currentSpeaker: CurrentSpeaker;
+  payload: Payload;
 } => {
   const [audioContext, setAudioContext] = React.useState<AudioContext>();
   const [audioAnalyser, setAudioAnalyser] = React.useState<AnalyserNode>();
   const [audioQueue, setAudioQueue] = React.useState<Buffer[]>([]);
   const [currentSpeaker, setCurrentSpeaker] =
     React.useState<CurrentSpeaker>("none");
+  const [payload, setPayload] = 
+    React.useState<Payload>({name: "a",text:"b"});
   const [processing, setProcessing] = React.useState(false);
   const [recorder, setRecorder] = React.useState<IMediaRecorder>();
   const [socket, setSocket] = React.useState<WebSocket>();
@@ -387,5 +391,6 @@ export const useConversation = (
     analyserNode: audioAnalyser,
     transcripts,
     currentSpeaker,
+    payload
   };
 };

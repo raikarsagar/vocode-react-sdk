@@ -47,3 +47,8 @@ export type Transcript = {
   sender: string;
   text: string;
 };
+
+export type Payload = {
+  name: string;
+  text: string;
+};
