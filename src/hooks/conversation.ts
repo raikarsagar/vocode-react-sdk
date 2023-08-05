@@ -41,15 +41,14 @@ export const useConversation = (
   analyserNode: AnalyserNode | undefined;
   transcripts: Transcript[];
   currentSpeaker: CurrentSpeaker;
-  payload: Payload;
 } => {
   const [audioContext, setAudioContext] = React.useState<AudioContext>();
   const [audioAnalyser, setAudioAnalyser] = React.useState<AnalyserNode>();
   const [audioQueue, setAudioQueue] = React.useState<Buffer[]>([]);
   const [currentSpeaker, setCurrentSpeaker] =
     React.useState<CurrentSpeaker>("none");
-  const [payload, setPayload] = 
-    React.useState<Payload>({name: "a",text:"b"});
+  // const [payload, setPayload] = 
+  //   React.useState<Payload>({name: "a",text:"b"});
   const [processing, setProcessing] = React.useState(false);
   const [recorder, setRecorder] = React.useState<IMediaRecorder>();
   const [socket, setSocket] = React.useState<WebSocket>();
@@ -192,7 +191,7 @@ export const useConversation = (
     downsampling: number | undefined,
     conversationId: string | undefined,
     subscribeTranscript: boolean | undefined,
-    payload: any
+    payload: any | undefined
   ): AudioConfigStartMessage => ({
     type: "websocket_audio_config_start",
     inputAudioConfig: {
@@ -213,7 +212,7 @@ export const useConversation = (
   const startConversation = async () => {
     if (!audioContext || !audioAnalyser) return;
     setStatus("connecting");
-
+    // setPayload()
     if (!isSafari && !isChrome) {
       stopConversation(new Error("Unsupported browser"));
       return;
@@ -390,7 +389,6 @@ export const useConversation = (
     setActive,
     analyserNode: audioAnalyser,
     transcripts,
-    currentSpeaker,
-    payload
+    currentSpeaker
   };
 };
